@@ -4,7 +4,9 @@
 
     本项目只监控了 target-go 停止后， 会不会报警，及报警后的处理，更多的指标监控， 请移步 [prometheus 文档](https://prometheus.io/docs/introduction/overview/)
 
-### 文件目录结构	
+### 文件目录结构
+
+```
 .
 ├── alertmanager/
 ├── docker-compose.yml
@@ -14,6 +16,8 @@
 ├── prometheus/
 ├── readme.md
 └── target-go/
+
+```
 
 - alertmanager/ : prometheus 的 报警管理器，负责报警信息归集，发送通知等
 - prometheus/   : docker 启动的 prometheus 服务， 收集监控信息，根据监控信息发送报警
