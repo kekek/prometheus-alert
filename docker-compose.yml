@@ -1,0 +1,54 @@
+version: '3'
+services:
+
+### mysql 服务器
+#   mysql:
+#     image: mysql:5.7
+#     ports:
+#       - "5000:3306"
+#     # volumes:
+#     #   - ./mysql/var:/var/
+#     environment:
+#       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+
+# ### mysql export
+#   mysql-export:
+#     image: prom/mysqld-exporter
+#     ports:
+#       - "9104:9104"
+#     environment:
+#       - DATA_SOURCE_NAME= "root:${MYSQL_ROOT_PASSWORD}@(mysql:3306)"
+
+### golang 程序
+  kingtrader:
+    build: 
+      context: .
+      dockerfile: ./target-go/Dockerfile
+    working_dir: /project
+    ports:
+      - 2112:2112
+    volumes:
+      - ${PWD}/target-go:/project
+    entrypoint: make build run 
+    
+### prometheus 启动
+  prometheus:
+    image: prom/prometheus
+    ports:
+      - 9090:9090/tcp
+    user: root
+    volumes:
+      - ${PWD}/prometheus/data:/prometheus
+      - ${PWD}/prometheus/conf:/etc/prometheus
+    hostname: localhost
+
+### prometheus altermanager 
+  alert:
+    image: prom/alertmanager
+    ports:
+      - 9093:9093
+    user: root
+    volumes:
+      - ${PWD}/alertmanager/data:/alertmanager
+      - ${PWD}/alertmanager/conf:/etc/alertmanager
+    hostname: localhost

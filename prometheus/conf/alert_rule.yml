@@ -1,0 +1,16 @@
+groups:
+  - name: hostServiceAlert
+    rules:
+      - alert: KingtraderAlive
+        expr: up{job="kingtrader"} != 1
+        for: 1m
+        annotations:
+          summary: "Service {{$labels.job}} down"
+          description: "{{ $labels.instance }} of job {{ $labels.job }} has been down for more than 5 minutes."
+  - name: example
+    rules:
+    - alert: KingtraderAlive
+      expr:  up{job="kingtrader"} != 1
+      for: 1m
+      annotations:
+        summary: test alert
