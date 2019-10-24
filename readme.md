@@ -65,7 +65,7 @@ receivers:
 
 ![job="kingtrader"服务启动状态 1](./images/img1.png)
 
-![指标报警触发状态 绿色](./images/img1.png)
+![指标报警触发状态 绿色](./images/img2.png)
 
 
 - 停止 kingtrader 再次查看
@@ -76,6 +76,6 @@ receivers:
 ![job="kingtrader"服务启动状态 0](./images/img3.png)
 
 
-![指标报警触发状态 红色](./images/img1.png)
+![指标报警触发状态 红色](./images/img4.png)
 
 - 不出意外的话，过5分钟就能收到报警信息啦
