@@ -1,8 +1,17 @@
 ## prometheus 报警监控实践
 
-    这是个练手的项目，主要用来理解prometheus的监控报警流程及配置，使用docker-compose 快速上手。
+    这是个练手的项目，主要用来理解prometheus的监控报警流程及配置，使用docker-compose 快速上手，实现微信以及email报警。本文的主要目的，一是记录， 二时帮助新手来理解报警监控。
 
     本项目只监控了 target-go 停止后， 会不会报警，及报警后的处理，更多的指标监控， 请移步 [prometheus 文档](https://prometheus.io/docs/introduction/overview/)
+
+
+    本项目涉及到的知识点：
+    
+    1. docker-compose 编排管理docker服务
+
+    2. prometheus 指标采集
+
+    3. prometheus 报警管理 
 
 ### 文件目录结构
 
